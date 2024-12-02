@@ -1,0 +1,133 @@
+/* Réinitialisation et styles globaux */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Corps de la page */
+body {
+    background-color: #f4f7fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+}
+
+/* Conteneur principal pour le formulaire */
+.login-container {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 40px 30px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+/* Titre du formulaire */
+h2 {
+    text-align: center;
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Groupes de champs d'entrée */
+.input-group {
+    margin-bottom: 20px;
+}
+
+/* Labels */
+.input-group label {
+    display: block;
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+/* Champs de texte */
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+/* Champ de texte au focus */
+.input-group input:focus {
+    border-color: #007bff;
+}
+
+/* Bouton de soumission */
+button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Effet de survol du bouton */
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Message d'erreur */
+.error-message {
+    color: #e74c3c;
+    font-size: 14px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Section de succès de connexion */
+#login-success {
+    text-align: center;
+    font-size: 18px;
+    color: green;
+    display: none; /* Caché par défaut, sera affiché si le login est réussi */
+}
+
+/* Bouton de déconnexion */
+#logout-button {
+    margin-top: 20px;
+    padding: 10px 15px;
+    background-color: #e74c3c;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+}
+
+#logout-button:hover {
+    background-color: #c0392b;
+}
+
+/* Centrer tous les éléments dans la page */
+#login-success, .login-container {
+    text-align: center;
+}
+
+/* Mise en page responsive : s'assurer que la page est adaptée aux petits écrans */
+@media (max-width: 500px) {
+    .login-container {
+        padding: 20px 15px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    button[type="submit"] {
+        padding: 10px;
+    }
+}

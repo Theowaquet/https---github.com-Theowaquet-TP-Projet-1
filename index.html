@@ -1,21 +1,41 @@
 <!DOCTYPE html>
-<html lang="fr-fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="index.css">
+    <title>Connexion</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="loged.css">
 </head>
-<body>
-    <div id="login-success" style="display: none;">
-            <h2>Login réussi !</h2>
-            <div id="score">Score</div>
-            <!-- Bouton de déconnexion -->
-            <button id="logout-button">Se déconnecter</button>
+<a href="https://fr.freepik.com/vecteurs-libre/conception-abstraite-low-poly_7178735.htm#fromView=keyword&page=1&position=1&uuid=92df7473-9855-432f-b2bd-e040c6bc0a16"></a>
+<body class="bg-light">
+        <div class="container">
+            <div class="row mt-5">
+                <div class="col-lg-4 bg-white m-auto rounded-top">
+                    <h2 class="text-center">Connexion</h2>
+                    <form action="">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-user"></i></span>
+                            <input type="text" class="form-control" id="login" placeholder="Login">
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-lock"></i></span>
+                            <input type="password" class="form-control" id="password" placeholder="Password">
+                        </div>
+
+                        <div class="d-grip">
+                            <button type="button" class="btn btn-success" id="submitButton">Se Connecter</button>
+                            
+                            <p class="text-center">
+                                Vous n'avez pas de compte ? <a href="inscription.html">Inscription</a>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-      
-        <p id="error-message" class="error-message"></p>
-    </div>
-    <script src="boostrap.js"></script> <!-- Inclure le fichier JavaScript -->
 </body>
 </html>
+<script src="connection.js"></script>
