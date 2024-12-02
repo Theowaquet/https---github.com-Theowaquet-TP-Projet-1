@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire d'inscription</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/style2.css">
+</head>
+<a href="https://fr.freepik.com/vecteurs-libre/conception-abstraite-low-poly_7178735.htm#fromView=keyword&page=1&position=1&uuid=92df7473-9855-432f-b2bd-e040c6bc0a16"></a>
+<body class="bg-light">
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-lg-4 bg-white m-auto rounded-top">
+                <h2 class="text-center">Inscription</h2>
+                <form action="inscription.js" method="post">
+                    <div class="input-group mb-3">
+                        <label for="Login" class="input-group-text"><i class="fa fa-user"></i></label>
+                        <input type="text" class="form-control" id="login" name="login" placeholder="Login" required>
+                    </div>
+                    
+                    <div class="input-group mb-3">
+                        <label for="Password" class="input-group-text"><i class="fa fa-lock"></i></label>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+                    </div>
+
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-success" id="registerButton">S'inscrire</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="inscription.js"></script>
+</body>
+</html>
