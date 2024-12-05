@@ -10,21 +10,14 @@ document.getElementById('submitButton').addEventListener('click', function() {
     const data = { login, passwd };
 
     // Requête connexion
-    fetch('http://192.168.65.98:80/login', {
+    fetch('http://localhost:3000/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(data)
     })
-    .then(response => {
-        const contentType = response.headers.get('content-type');
-        if (contentType && contentType.includes('application/json')) {
-            return response.json();
-        } else {
-            throw new Error('La réponse du serveur n\'est pas au format JSON');
-        }
-    })
+    .then(response => response.json())
     .then(result => {
         if (result.token) {
             localStorage.setItem('token', result.token);
@@ -39,3 +32,4 @@ document.getElementById('submitButton').addEventListener('click', function() {
         alert('Une erreur est survenue. Veuillez réessayer plus tard.');
     });
 });
+

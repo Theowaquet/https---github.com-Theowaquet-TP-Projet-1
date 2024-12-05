@@ -4,33 +4,34 @@ document.getElementById('registerButton').addEventListener('click', function(eve
     const login = document.getElementById('login').value;
     const password = document.getElementById('password').value;
 
+    if (login === '' || password === '') {
+        alert('Veuillez remplir tous les champs');
+        return;
+    }
+
     const data = {
         login: login,
         passwd: password
     };
 
     // Requête inscription
-    fetch('http://192.168.65.98:80/register', {
+    fetch('http://localhost:3000/register', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(data)
     })
-    .then(response => {
-        if (!response.ok) {
-            return response.json().then(err => {
-                throw new Error(err.message || 'Erreur d\'inscription');
-            });
-        }
-        return response.json();
-    })
+    
+    .then(response => response.json())
     .then(result => {
         alert(result.message);
-        window.location.href = 'connexion.html';
+        if (result.message === 'Inscription réussie.') {
+            window.location.href = 'connexion.html';
+        }
     })
     .catch(error => {
         console.error('Erreur:', error);
-        alert(error.message || 'Une erreur est survenue. Veuillez réessayer plus tard.');
+        alert('Une erreur est survenue. Veuillez réessayer plus tard.');
     });
 });
