@@ -10,12 +10,12 @@ document.getElementById('registerButton').addEventListener('click', function(eve
     }
 
     const data = {
-        login: login,
+        identifiant: login,
         passwd: password
     };
 
     // Requête inscription
-    fetch('http://localhost:3000/register', {
+    fetch('http://192.168.65.98:3000/register', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

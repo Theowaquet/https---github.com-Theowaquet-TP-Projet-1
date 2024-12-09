@@ -10,7 +10,7 @@ document.getElementById('submitButton').addEventListener('click', function() {
     const data = { login, passwd };
 
     // Requête connexion
-    fetch('http://localhost:3000/login', {
+    fetch('http://192.168.65.98:3000/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -22,7 +22,7 @@ document.getElementById('submitButton').addEventListener('click', function() {
         if (result.token) {
             localStorage.setItem('token', result.token);
             alert('Connexion réussie!');
-            window.location.href = 'connected.html';
+            window.location.href = 'loged.html';
         } else {
             alert(result.message || 'Erreur de connexion');
         }

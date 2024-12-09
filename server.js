@@ -3,13 +3,13 @@ const bodyParser = require('body-parser');
 const mysql = require('mysql');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-
+const cors = require('cors');
 const app = express();
 const PORT = 3000;
 const SECRET_KEY = "votre_cle_secrete"; // Remplacez par une clé secrète unique.
 
 app.use(bodyParser.json());
-
+app.use(cors());
 // Connexion à la base de données MySQL
 const db = mysql.createConnection({
     host: 'localhost',
@@ -25,6 +25,7 @@ db.connect((err) => {
 
 // Inscription
 app.post('/register', async (req, res) => {
+    console.log("Demande d'inscription reçue", req.body);
     const { identifiant, passwd } = req.body;
 
     // Vérification des données reçues
@@ -33,19 +34,38 @@ app.post('/register', async (req, res) => {
     }
 
     try {
-        // Hash du mot de passe (par exemple, avec bcrypt)
-        const hashedPassword = await bcrypt.hash(passwd, 10);
-
-        // Enregistrer dans la base de données
-        const query = "INSERT INTO Users (identifiant, mot_de_passe) VALUES (?, ?)";
-        db.query(query, [identifiant, hashedPassword], (err, results) => {
+        // Vérification si l'identifiant existe déjà
+        const checkQuery = "SELECT * FROM Users WHERE identifiant = ?";
+        db.query(checkQuery, [identifiant], async (err, results) => {
             if (err) {
                 console.error(err);
-                return res.status(500).json({ message: 'Erreur serveur.' });
+                return res.status(500).json({ message: 'Erreur serveur lors de la vérification.' });
             }
 
-            // Répondre avec un JSON de succès
-            res.json({ message: 'Inscription réussie!' });
+            if (results.length > 0) {
+                return res.status(400).json({ message: 'Cet identifiant est déjà utilisé.' });
+            }
+
+            // Hashage du mot de passe
+            const hashedPassword = await bcrypt.hash(passwd, 10);
+
+            // Générer un token
+            const token = jwt.sign({ identifiant }, SECRET_KEY, { expiresIn: '1h' });
+
+            // Obtenir la date actuelle pour created_at
+            const createdAt = new Date();
+
+            // Enregistrer dans la base de données
+            const insertQuery = "INSERT INTO Users (identifiant, mot_de_passe, token, created_at) VALUES (?, ?, ?, ?)";
+            db.query(insertQuery, [identifiant, hashedPassword, token, createdAt], (err, results) => {
+                if (err) {
+                    console.error(err);
+                    return res.status(500).json({ message: 'Erreur serveur lors de l\'enregistrement.' });
+                }
+
+                // Répondre avec un JSON de succès
+                res.status(201).json({ message: 'Inscription réussie.', token });
+            });
         });
     } catch (error) {
         console.error(error);
