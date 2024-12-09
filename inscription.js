@@ -27,7 +27,7 @@ document.getElementById('registerButton').addEventListener('click', function(eve
     .then(result => {
         alert(result.message);
         if (result.message === 'Inscription réussie.') {
-            window.location.href = 'connexion.html';
+            window.location.href = 'index.html';
         }
     })
     .catch(error => {

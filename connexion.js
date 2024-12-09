@@ -7,6 +7,8 @@ document.getElementById('submitButton').addEventListener('click', function() {
         return;
     }
 
+    console.log(login);
+    console.log(passwd);
     const data = { login, passwd };
 
     // Requête connexion
@@ -22,7 +24,7 @@ document.getElementById('submitButton').addEventListener('click', function() {
         if (result.token) {
             localStorage.setItem('token', result.token);
             alert('Connexion réussie!');
-            window.location.href = 'loged.html';
+            window.location.href = 'map.html';
         } else {
             alert(result.message || 'Erreur de connexion');
         }
