@@ -13,8 +13,16 @@ header {
 }
 
 main {
-    padding: 20px;
+    height: 90vh; /* La carte occupera 90% de la hauteur de l'écran */
+    width: 100%;  /* Largeur pleine */
 }
+
+#mapid {
+    height: 80%; /* La carte s'étend dans le conteneur */
+    width: 100%;
+}
+
+
 
 footer {
     background-color: #333;
@@ -25,4 +33,15 @@ footer {
     width: 100%;
 }
 
-#mapid {	height: 180px;	}
+html, body, #mapid {
+    height: 100%; /* La carte occupera tout l'écran en hauteur */
+    margin: 0;    /* Supprime les marges */
+    padding: 0;   /* Supprime les paddings */
+    width: 100%;  /* Pleine largeur */
+}
+
+
+#mapid {
+    height: 700px; /* Augmente la hauteur */
+    width: 100%;   /* Garde la largeur sur tout l'écran */
+}
