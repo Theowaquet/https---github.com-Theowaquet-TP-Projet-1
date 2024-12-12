@@ -1,15 +1,15 @@
 document.getElementById('submitButton').addEventListener('click', function() {
-    const login = document.getElementById('login').value;
+    const identifiant = document.getElementById('login').value;
     const passwd = document.getElementById('password').value;
 
-    if (login === '' || passwd === '') {
+    if (identifiant === '' || passwd === '') {
         alert('Veuillez remplir tous les champs');
         return;
     }
 
-    console.log(login);
+    console.log(identifiant);
     console.log(passwd);
-    const data = { login, passwd };
+    const data = { identifiant, passwd };
 
     // Requête connexion
     fetch('http://192.168.65.98:3000/login', {
@@ -24,7 +24,7 @@ document.getElementById('submitButton').addEventListener('click', function() {
         if (result.token) {
             localStorage.setItem('token', result.token);
             alert('Connexion réussie!');
-            window.location.href = 'map.html';
+            window.location.href = './map.html';
         } else {
             alert(result.message || 'Erreur de connexion');
         }

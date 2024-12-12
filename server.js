@@ -77,7 +77,7 @@ app.post('/register', async (req, res) => {
 app.post('/login', (req, res) => {
     const { identifiant, passwd } = req.body;
 
-    if (!login || !passwd) {
+    if (!identifiant || !passwd) {
         return res.status(400).json({ message: 'Veuillez fournir un identifiant et un mot de passe.' });
     }
 
